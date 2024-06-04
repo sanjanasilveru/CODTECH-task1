@@ -1,0 +1,36 @@
+# Importing necessary libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the Iris dataset
+iris_df = pd.read_csv('https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv')
+
+# Display the first few rows of the dataset
+print(iris_df.head())
+
+# Get a summary of the dataset
+print(iris_df.info())
+
+# Summary statistics
+print(iris_df.describe())
+
+# Check for missing values
+print(iris_df.isnull().sum())
+
+# Visualizing distributions of features
+sns.pairplot(iris_df, hue='species', diag_kind='hist')
+plt.show()
+
+# Correlation heatmap
+plt.figure(figsize=(8, 6))
+sns.heatmap(iris_df.corr(), annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlation Heatmap')
+plt.show()
+
+# Boxplot for each feature
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=iris_df)
+plt.title('Boxplot of Iris Features')
+plt.show()
